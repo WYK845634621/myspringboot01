@@ -70,6 +70,7 @@
 							</thead>
 							<tbody>
 								<tr th:each="emp:${emps}">
+									<th> </th>
 									<th th:text="${emp.id}"></th>
 									<th>[[${emp.lastName}]]</th>
 									<th th:text="${emp.email}"></th>
@@ -77,7 +78,7 @@
 									<th th:text="${emp.department.departmentName}"></th>
 									<th th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')} "></th>
 									<th>
-										<button class="btn btn-sm btn-primary">编辑</button>
+										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
 										<button class="btn btn-sm btn-danger">删除</button>
 									</th>
 
