@@ -1,9 +1,11 @@
 package com.yikai.myspringboot.controller;
 
+import com.yikai.myspringboot.exception.UserNotExist;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.websocket.server.PathParam;
 import java.util.Map;
 
 /**
@@ -15,7 +17,10 @@ public class HCon {
 
     @ResponseBody
     @RequestMapping("/hello")
-    public String hello() {
+    public String hello(@PathParam("user") String user) {
+        if (user.equals("aaa")){
+            throw new UserNotExist();
+        }
         return "hello";
     }
 

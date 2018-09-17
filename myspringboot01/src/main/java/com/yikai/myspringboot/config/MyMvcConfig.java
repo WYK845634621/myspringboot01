@@ -1,6 +1,5 @@
 package com.yikai.myspringboot.config;
 
-import com.yikai.myspringboot.component.LoginHandlerInterceptor;
 import com.yikai.myspringboot.component.MyLocale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +38,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
 //              静态资源已经被springboot处理好，不用你来做
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/user/login");
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/user/login");
             }
         };
         return  adapter;

@@ -7,10 +7,7 @@ import com.yikai.myspringboot.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -63,10 +60,17 @@ public class EmployeeController {
         return "emp/add";
     }
 
+//    进行修改操作
     @PutMapping("/emp")
     public  String update(Employee employee){
         System.out.println("要修改的员工是: " + employee);
         employeeDao.save(employee);
+        return "redirect:/emps";
+    }
+
+    @DeleteMapping("/emp/{id}")
+    public  String delete(@PathVariable("id") Integer id){
+        employeeDao.delete(id);
         return "redirect:/emps";
     }
 
